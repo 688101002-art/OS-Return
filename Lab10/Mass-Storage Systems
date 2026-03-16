@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct HDD {
+    int cylinders;
+    int tracks_per_cylinder;
+    int sectors_per_track;
+    int bytes_per_sector;
+
+    // ต้องใส่ ; ปิดท้าย struct ตรงนี้ (บรรทัดที่ 14)
+    long long totalCapacity() {
+        return (long long)cylinders * tracks_per_cylinder 
+               * sectors_per_track * bytes_per_sector;
+    }
+}; // <--- เติม ; ตรงนี้
+
+int main() {
+    // กำหนดค่าเริ่มต้นให้ HDD
+    HDD disk = {1024, 16, 63, 512};
+    
+    // แก้ไขเครื่องหมาย << และ " ให้ถูกต้อง
+    cout << "Total Capacity: " << disk.totalCapacity() << " bytes" << endl;
+    
+    return 0;
+}
